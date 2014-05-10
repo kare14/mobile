@@ -16,11 +16,11 @@ public class IntroActivity extends Activity {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                Intent intent = new Intent(IntroActivity.this, TabViewActivity.class);
+                Intent intent = new Intent(IntroActivity.this, LoginActivity.class);
                 startActivity(intent);
                 // 뒤로가기 했을경우 안나오도록 없애주기 >> finish!!
                 finish();
             }
-        }, 5000);   
+        }, 15000);   
     }
 }
