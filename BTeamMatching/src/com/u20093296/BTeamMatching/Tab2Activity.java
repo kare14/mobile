@@ -6,13 +6,11 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 public class Tab2Activity extends Activity {
-	protected void onCreate(Bundle bun) {
-		super.onCreate(bun);
-		TextView  tv = new  TextView( this ) ;
-		tv.setTextColor(Color.RED) ;
-		tv.setTextSize(28) ;
-		tv.setText("Ã£±â") ;
-		this.setContentView(tv) ;
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		this.setContentView(R.layout.tab2) ;
+		
+
 	} //end
 	
 } //class END

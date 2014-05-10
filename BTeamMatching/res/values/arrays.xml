@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="spinnerArray1">
+        <item>센터 (C)</item>
+        <item>파워포워드 (PF)</item>
+        <item>스몰포워드 (SF)</item>
+        <item>슈팅가드 (SG)</item>
+        <item>포인트가드 (PG)</item>
+    </string-array>
+
+</resources>
