@@ -32,14 +32,13 @@
                     android:text="전화번호"
                     android:textSize="20sp" />
 
-
-
-                <EditText
-                    android:id="@+id/editText1"
+                <TextView
+                    android:id="@+id/Phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="numberDecimal" />
+                    android:inputType="numberDecimal"
+                    android:textSize="20sp" />
 
             </LinearLayout>
         </TableRow>
@@ -184,7 +183,7 @@
                 android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="확인" />
+                android:text="수정" />
 
         </TableRow>
     </TableLayout>

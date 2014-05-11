@@ -31,7 +31,7 @@ public class TabViewActivity extends TabActivity {
 		tabhost.addTab(spec) ;
 		
 		intent  = new  Intent( ).setClass(this, Tab4Activity.class) ;
-		spec=tabhost.newTabSpec("Tab1").setIndicator("등록", res.getDrawable(R.drawable.f1)).setContent(intent) ;
+		spec=tabhost.newTabSpec("Tab1").setIndicator("프로필", res.getDrawable(R.drawable.f1)).setContent(intent) ;
 		tabhost.addTab(spec) ;
 		
 		tabhost.setCurrentTab(0) ; 

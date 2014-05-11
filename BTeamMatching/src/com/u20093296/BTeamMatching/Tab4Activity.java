@@ -16,6 +16,8 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.AdapterView;
@@ -38,32 +40,38 @@ import android.view.View.OnClickListener;
 
 public class Tab4Activity extends Activity implements OnClickListener {
 
-	String phone, area, height, weight, pos;
-	EditText etxt1, etxt3, etxt4;
+	String phone, area, height, weight;
+	int pos;
+	EditText  etxt3, etxt4;
+	TextView tv1;
 	AutoCompleteTextView autoCompView;
 	Spinner obj;
-
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.tab4);
-
-		etxt1 = (EditText) findViewById(R.id.editText1);
+		
+		SharedPreferences pref = getSharedPreferences("profile", MODE_PRIVATE);
+		
+		tv1 = (TextView) findViewById(R.id.Phone);
 		etxt3 = (EditText) findViewById(R.id.editText3);
 		etxt4 = (EditText) findViewById(R.id.editText4);
-
-		TelephonyManager telephony = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-
-		String telPhoneNo = telephony.getLine1Number();
-		etxt1.setText(telPhoneNo);
-
 		autoCompView = (AutoCompleteTextView) findViewById(R.id.AutoCompleteTextView1);
-		autoCompView.setAdapter(new PlacesAutoCompleteAdapter(this,
-				R.layout.list_item));
+		
+		tv1.setText(pref.getString("Phone", ""));
+		etxt3.setText(pref.getString("height", "" ));
+		etxt4.setText(pref.getString("weight", "" ));
+		
+	    //pass=pref.getString("PW", "");
+		pos=Integer.parseInt(pref.getString("position", ""));
+		
 
-		String[] optionLevel = getResources().getStringArray(
-				R.array.spinnerArray1);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_dropdown_item, optionLevel);
+		autoCompView.setAdapter(new PlacesAutoCompleteAdapter(this,	R.layout.list_item));
+
+		autoCompView.setText(pref.getString("Area", ""));
+		
+		String[] optionLevel = getResources().getStringArray(R.array.spinnerArray1);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, optionLevel);
 		obj = (Spinner) findViewById(R.id.spinner1);
 
 		obj.setAdapter(adapter);
@@ -73,9 +81,9 @@ public class Tab4Activity extends Activity implements OnClickListener {
 			@Override
 			public void onItemSelected(AdapterView<?> parenView,
 					View selectedView, int position, long id) {
-
-				pos = (String) obj.getAdapter().getItem(
-						obj.getSelectedItemPosition());
+				obj.setSelection(pos);
+				pos =obj.getSelectedItemPosition();
+				//pos = (String) obj.getAdapter().getItem(obj.getSelectedItemPosition());
 			}
 
 			@Override
@@ -85,6 +93,8 @@ public class Tab4Activity extends Activity implements OnClickListener {
 
 		});
 
+		
+		
 		Button resultBnt = (Button) findViewById(R.id.button1);
 
 		resultBnt.setOnClickListener(this);
@@ -94,35 +104,39 @@ public class Tab4Activity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		phone = etxt1.getText().toString();
+		phone = tv1.getText().toString();
 		area = autoCompView.getText().toString();
 		height = etxt3.getText().toString();
 		weight = etxt4.getText().toString();
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Dialog");
-		builder.setMessage("전화번호: " + phone + "\n활동지역: " + area + "\n키: "
-				+ height + "\n몸무게: " + weight + "\n포지션: " + pos + "\n");
-		builder.setNeutralButton("neutral",
+		builder.setMessage("전화번호: " + phone  + "\n활동지역: " + area + "\n키: "
+				+ height + "\n몸무게: " + weight + "\n포지션: " + (String) obj.getAdapter().getItem(
+						pos) + "\n\n 수정 하겠습니까?");
+
+		builder.setNegativeButton("취소",
 				new DialogInterface.OnClickListener() {
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
 
 					}
 				});
-		builder.setNegativeButton("negative",
-				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-
-					}
-				});
-		builder.setPositiveButton("positive",
+		builder.setPositiveButton("등록",
 				new DialogInterface.OnClickListener() {
 
 					@Override
 					public void onClick(DialogInterface dialog, int which) {
-
+						
+						SharedPreferences pref = getSharedPreferences("profile", MODE_PRIVATE);
+				        SharedPreferences.Editor editor = pref.edit();
+				        editor.putString("Phone", phone);
+				        //editor.putString("PW", pass);
+				        editor.putString("Area", area);
+				        editor.putString("height", height);
+				        editor.putString("weight", weight);
+				        editor.putString("position", ""+pos);
+				        editor.commit();
 					}
 				});
 		builder.show();
