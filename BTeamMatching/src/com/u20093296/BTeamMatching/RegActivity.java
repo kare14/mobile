@@ -143,7 +143,7 @@ public class RegActivity extends Activity implements OnClickListener {
 	private static final String TYPE_AUTOCOMPLETE = "/autocomplete";
 	private static final String OUT_JSON = "/json";
 
-	private static final String API_KEY = "YOUR_API_KEY";
+	private static final String API_KEY = "AIzaSyB8ZCPZOzhgHnzTe_4TBxY0WIB51wKj_To";
 
 	private ArrayList<String> autocomplete(String input) {
 		ArrayList<String> resultList = null;
