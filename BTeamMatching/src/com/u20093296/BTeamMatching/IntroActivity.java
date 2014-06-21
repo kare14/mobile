@@ -1,4 +1,4 @@
-package com.u20093296.BTeamMatching;
+package com.u20093296.bteammatching;
 
 import android.app.Activity;
 import android.content.Intent;
