@@ -1,4 +1,4 @@
-package com.u20093296.bteammatching;
+package com.u20093296.BTeamMatching;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
