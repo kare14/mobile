@@ -7,11 +7,17 @@
      
    <!--  Screen Design for Food tab -->
 
-     <TextView
+     <LinearLayout
          android:layout_width="fill_parent"
-         android:layout_height="wrap_content"
-         android:padding="15dip"
-         android:text="경기 매칭"
-         android:textSize="28dip" />
+         android:layout_height="fill_parent"
+         android:orientation="vertical" >
+
+         <ListView
+             android:id="@+id/ListView1"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content" >
+         </ListView>
+
+     </LinearLayout>
 
  </RelativeLayout>

@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.u20093296.bteammatching"
+    package="com.example.bteammatching"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="10" />
+        android:targetSdkVersion="19" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -14,7 +19,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.u20093296.bteammatching.MainActivity"
+            android:name="com.example.bteammatching.IntroActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +27,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="LoginActivity"></activity>
+        <activity android:name="RegActivity"></activity>
+        <activity android:name="TabViewActivity"></activity>
+        <activity android:name="ProfileActivity"></activity>
+        <activity android:name="SearchActivity"></activity>
+        <activity android:name="MatchActivity"></activity>
+        <activity android:name="TeamActivity"></activity>
+        <activity android:name="TeamRegActivity"></activity>
     </application>
 
 </manifest>
